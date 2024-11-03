@@ -9,6 +9,8 @@ const bookAuthor = document.querySelector("#book-author");
 const bookPages = document.querySelector("#book-pages");
 const answer = document.querySelector("#answer");
 
+let deleteBtn = document.querySelectorAll(".delete-btn");
+
 function Book(title, author, pages, readStatus) {
   //constructor
   this.title = title;
@@ -26,11 +28,26 @@ const addBookToLibrary = (book) => {
 
 const displayAllBooks = () => {
   list.innerHTML = "";
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     //console.log(book.info());
     const listItem = document.createElement("li");
+    listItem.setAttribute("data-index", index);
     listItem.textContent = book.info();
+
+    const delBtn = document.createElement("button");
+    delBtn.classList.add("delete-btn");
+    delBtn.textContent = "Remove from Library";
+    listItem.appendChild(delBtn);
+
     list.appendChild(listItem);
+  });
+  deleteBtn = document.querySelectorAll(".delete-btn");
+  deleteBtn.forEach((button, index) => {
+    button.addEventListener("click", (event) => {
+      console.log(`clicked, index: ${index}`);
+      myLibrary.splice(index, 1);
+      displayAllBooks();
+    });
   });
 };
 
@@ -51,7 +68,6 @@ form.addEventListener("submit", (event) => {
     answer.value
   );
   addBookToLibrary(newBook);
-  console.log(myLibrary);
   formPanel.classList.add("hidden");
   displayAllBooks();
 });
