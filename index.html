@@ -7,5 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="library">
+        <p><button type="button" class="new-book-btn">New Book</button></p>
+        <ul class="list"></ul>
+      </div>
+    </main>
+    <aside class="active">
+      <form>
+        <label for="book-title">Book Title</label>
+        <input id="book-title" type="text" />
+        <label for="book-author">Book Author</label>
+        <input id="book-author" type="text" />
+        <label for="book-pages">Pages</label>
+        <input id="book-pages" type="text" />
+        <select name="answer" id="answer">
+          <option value="">Please choose an option:</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <button type="submit" class="submit-btn">Add book</button>
+        <button type="reset" class="reset-btn">Cancel</button>
+      </form>
+    </aside>
+  </body>
 </html>
