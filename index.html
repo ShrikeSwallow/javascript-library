@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Library</title>
   </head>
   <body>
     <main>
@@ -14,21 +14,32 @@
         <ul class="list"></ul>
       </div>
     </main>
-    <aside class="active">
+    <aside class="hidden">
       <form>
-        <label for="book-title">Book Title</label>
-        <input id="book-title" type="text" />
-        <label for="book-author">Book Author</label>
-        <input id="book-author" type="text" />
-        <label for="book-pages">Pages</label>
-        <input id="book-pages" type="text" />
-        <select name="answer" id="answer">
-          <option value="">Please choose an option:</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-        <button type="submit" class="submit-btn">Add book</button>
-        <button type="reset" class="reset-btn">Cancel</button>
+        <div class="form-input">
+          <label for="book-title">Book Title</label>
+          <input id="book-title" type="text" />
+        </div>
+        <div class="form-input">
+          <label for="book-author">Book Author</label>
+          <input id="book-author" type="text" />
+        </div>
+        <div class="form-input">
+          <label for="book-pages">Pages</label>
+          <input id="book-pages" type="text" />
+        </div>
+        <div class="form-select">
+          <label for="answer">Have you read it?</label>
+          <select name="answer" id="answer">
+            <option value="">Please choose:</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="submit-btn">Add book</button>
+          <button type="reset" class="reset-btn">Cancel</button>
+        </div>
       </form>
     </aside>
   </body>
