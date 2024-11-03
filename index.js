@@ -9,6 +9,7 @@ const bookAuthor = document.querySelector("#book-author");
 const bookPages = document.querySelector("#book-pages");
 const answer = document.querySelector("#answer");
 
+let statusBtn = document.querySelectorAll(".status-btn");
 let deleteBtn = document.querySelectorAll(".delete-btn");
 
 function Book(title, author, pages, readStatus) {
@@ -19,6 +20,13 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus.toLowerCase();
   this.info = () => {
     return `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.readStatus}`;
+  };
+  this.toggleRead = () => {
+    if (this.readStatus === "yes") {
+      this.readStatus = "no";
+    } else {
+      this.readStatus = "yes";
+    }
   };
 }
 
@@ -31,9 +39,12 @@ const displayAllBooks = () => {
   myLibrary.forEach((book, index) => {
     //console.log(book.info());
     const listItem = document.createElement("li");
-    listItem.setAttribute("data-index", index);
     listItem.textContent = book.info();
 
+    const status = document.createElement("button");
+    status.classList.add("status-btn");
+    status.textContent = "Change read status";
+    listItem.appendChild(status);
     const delBtn = document.createElement("button");
     delBtn.classList.add("delete-btn");
     delBtn.textContent = "Remove from Library";
@@ -41,6 +52,15 @@ const displayAllBooks = () => {
 
     list.appendChild(listItem);
   });
+
+  statusBtn = document.querySelectorAll(".status-btn");
+  statusBtn.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      myLibrary[index].toggleRead();
+      displayAllBooks();
+    });
+  });
+
   deleteBtn = document.querySelectorAll(".delete-btn");
   deleteBtn.forEach((button, index) => {
     button.addEventListener("click", (event) => {
